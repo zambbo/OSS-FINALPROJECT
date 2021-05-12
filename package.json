@@ -1,0 +1,27 @@
+{
+  "name": "oss_finalproject",
+  "version": "1.0.0",
+  "description": "group_12's final Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zambbo/OSS-FINALPROJECT.git"
+  },
+  "author": "Kang Byung Jin, Kang Sung Chul, Lim Se Chang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zambbo/OSS-FINALPROJECT/issues"
+  },
+  "homepage": "https://github.com/zambbo/OSS-FINALPROJECT#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.9",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "electron": "^12.0.7"
+  }
+}
