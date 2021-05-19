@@ -8,8 +8,9 @@ function createWindow() {
     win = new BrowserWindow({
         width:800,
         height:600,
-        nodeIntegration: true, // renderer process에서 node.js api 접근 가능.
         webPreferences: {
+            nodeIntegration: true, // renderer process에서 node.js api 접근 가능.
+            contextIsolation: false, // node.js api 쓰기위해서.
             preload: path.join(__dirname,"preload.js"),
         },
     });
@@ -34,4 +35,3 @@ app.on("window-all-closed",() =>{
     }
 });
 
-require('./server');

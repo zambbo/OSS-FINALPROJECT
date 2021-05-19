@@ -7,7 +7,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <!-- include bootstrap css-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
@@ -19,21 +18,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
     />
+    <link rel="stylesheet" href="style/styles.css">
     <title>News Crawling WebPage App</title>
   </head>
   <body style="background-color: rgb(237, 253, 224)">
     <div
       id="title"
-      style="
-        width: 720px;
-        background-color: rgb(255, 255, 255);
-        margin: auto;
-        margin-top: 20px;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid lightgray;
-        box-shadow: 0px 4px 4px rgb(73, 73, 73);
-      "
     >
       <h1 class="text-center">
         <i class="bi bi-newspaper"></i> News Crawling Lists
@@ -41,16 +31,6 @@
     </div>
     <div
       id="news_list"
-      style="
-        width: 720px;
-        background-color: rgb(255, 255, 255);
-        margin: auto;
-        margin-top: 20px;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid lightgray;
-        box-shadow: 0px 4px 4px rgb(73, 73, 73);
-      "
     >
       <div
         class="
@@ -146,6 +126,9 @@
     <script>
       let news_list = [];
     </script>
+
+    <!-- .html 파일에서 node.js 모듈을 쓸 수 있는지 확인 (electron 이용해야만 가능.)-->
+    <div id="elec_node_text"></div>
+    <script src="crawling.js"></script>
   </body>
 </html>
->>>>>>> temp_merge_branch

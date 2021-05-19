@@ -25,6 +25,9 @@ getNewsList = () => {
             newsList[idx] = $(elem).find("div > div:nth-child(2) > div:first-child > a").attr("href");
         })
         console.log(newsList);
+        let elec_node_text_div = document.querySelector("#elec_node_text");
+        elec_node_text_div.textContent = newsList.toString();
     });
 }
 
+getNewsList();
