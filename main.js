@@ -1,7 +1,5 @@
 const {app,BrowserWindow} = require("electron");
-const { process } = require("ipaddr.js");
 const path = require("path");
-const {ipcMain} = require('electron');
 
 
 let win;
@@ -35,3 +33,5 @@ app.on("window-all-closed",() =>{
         app.quit();
     }
 });
+
+require('./server');

@@ -2,7 +2,7 @@
   "name": "oss_finalproject",
   "version": "1.0.0",
   "description": "group_12's final Project",
-  "main": "server.js",
+  "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
