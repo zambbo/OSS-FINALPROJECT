@@ -1,31 +1,24 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
 
 // science_and_environment corner
-news_url = "https://www.bbc.com/news/science_and_environment";
+let news_url_bs = news_urls['bbc']['sci'];
 
-// news_url을 받아서 해당 url에 request를 보내고 response를 받아오는 함수
-async function getNewsSrc(_news_url){
-    try{
-        const response = await axios.get(_news_url);
-        return response;   
-    } catch(error){
-        console.error(error);
-    }
-}
+
 
 // 위의 news_url에 따라서 hot topic 뉴스들의 정보를 모두 모아 list에 저장.
-getNewsList = () => {
+async function getNewsList_bs(){
     let newsList = [];
     
-    getNewsSrc(news_url)
+    getNewsSrc(news_url_bs)
     .then(html =>{
         const $ = cheerio.load(html.data);
         
         let topStories = $('#top-stories').parent().children("div").children().children(".advert-page").children().children();
         
         topStories.each((idx,elem) =>{
-            newsList[idx] = "https://www.bbc.com"+$(elem).find("div > div:nth-child(2) > div:first-child > a").attr("href");
+            const url_back = $(elem).find("div > div:nth-child(2) > div:first-child > a").attr("href");
+            if(!url_back)
+                return;
+            newsList[idx] = "https://www.bbc.com"+ url_back;
         })
 
         //각각의 news_list에 대해서 타이틀을 출력. (just exercise)
@@ -34,12 +27,9 @@ getNewsList = () => {
             getNewsSrc(elem)
             .then(html2 => {
                 const $2 = cheerio.load(html2.data);
-                elec_node_text_div.textContent += $2('title').text();
+                entire_news_lists['bbc']['sci'].push($2('title').text());
                 console.log($2('title').text());
             });
         });
-        //elec_node_text_div.textContent = newsList.toString();
     });
 }
-
-getNewsList();

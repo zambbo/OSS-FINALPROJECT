@@ -20,6 +20,44 @@
     />
     <link rel="stylesheet" href="style/styles.css">
     <title>News Crawling WebPage App</title>
+    <script src="crawler/news_urls.js"></script>
+    <script src="entire_news_list.js"></script>
+    <script>
+        const axios = require("axios");
+        const cheerio = require("cheerio");
+    </script>
+    <script src="crawler/get_news_src.js"></script>
+    <script src="crawler/crawling_bbc_business.js"></script>
+    <script src="crawler/crawling_bbc_sci.js"></script>
+    <script src="crawler/crawling_bbc_tech.js"></script>
+    <script src="crawler/crawling_bbc_world.js"></script>
+    <script src="crawler/crawling_naver_business.js"></script>
+    <script src="crawler/crawling_naver_tech.js"></script>
+    <script src="crawler/crawling_naver_world.js"></script>
+    <script src="crawler/crawling_wsj_business.js"></script>
+    <script src="crawler/crawling_wsj_tech.js"></script>
+    <script src="crawler/crawling_wsj_world.js"></script>
+    <script>
+        async function test_async(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10){
+            await f1();
+            await f2();
+            await f3();
+            await f4();
+            await f5();
+            await f6();
+            await f7();
+            await f8();
+            await f9();
+            await f10();
+            return new Promise((resolve,reject) => {
+                resolve(entire_news_lists);
+            })
+        }
+        test_async(getNewsList_bb,getNewsList_bs,getNewsList_bt,getNewsList_bw,getNewsList_nb,getNewsList_nt,getNewsList_nw,getNewsList_wb,getNewsList_wt,getNewsList_ww)
+        .then(elem => console.log(elem.bbc.tech));
+    </script>
+
+
   </head>
   <body style="background-color: rgb(237, 253, 224)">
     <div
@@ -129,7 +167,6 @@
 
     <!-- .html 파일에서 node.js 모듈을 쓸 수 있는지 확인 (electron 이용해야만 가능.)-->
     <div id="elec_node_text"></div>
-    <script src="crawler/crawling_bbc.js"></script>
     <!-- papago 번역 test.-->
     <script src="translater/translater.js"></script>
   </body>
