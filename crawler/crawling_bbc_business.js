@@ -29,6 +29,7 @@ async function getNewsList_bb(){
             let body_list = $2('#main-content').children('.ssrcss-1ocoo3l-Wrap.e42f8511').children().children("div:first").children("article").children('div.ssrcss-uf6wea-RichTextComponentWrapper.e1xue1i84');
             body_list.each((idx,val) => body_lst.push($2(val).find("p").text()));
             let body = body_lst.join('');
+            //body = await translateEn2Ko(body);
             //console.log(body);
             let link = elem;
             ret_news_lists.push({title,body,link});

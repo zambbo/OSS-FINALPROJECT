@@ -22,6 +22,7 @@
     <title>News Crawling WebPage App</title>
     <script src="crawler/news_urls.js"></script>
     <script src="entire_news_list.js"></script>
+    <script src="translater/translater.js"></script>
     <script>
         const axios = require("axios");
         const cheerio = require("cheerio");
@@ -187,14 +188,5 @@
         </button>
       </div>
     </div>
-
-    <script>
-      let news_list = [];
-    </script>
-
-    <!-- .html 파일에서 node.js 모듈을 쓸 수 있는지 확인 (electron 이용해야만 가능.)-->
-    <div id="elec_node_text"></div>
-    <!-- papago 번역 test.-->
-    <script src="translater/translater.js"></script>
   </body>
 </html>
