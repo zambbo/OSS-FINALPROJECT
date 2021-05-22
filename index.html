@@ -108,95 +108,136 @@
     </head>
     <body style="background-color: rgb(237, 253, 224)">
         <div id="title">
-            <h1 class="text-center">
+            <h1 class="text-center" id="title_tag">
                 <i class="bi bi-newspaper"></i> News Crawling Lists
             </h1>
         </div>
-        <div id="news_list">
-            <div
-                class="
-                    bg-light
-                    p-1
-                    rounded-2
-                    ps-1
-                    d-flex
-                    align-items-center
-                    border
-                    mt-2
-                "
-            >
-                <span class="me-auto fs-2">
-                    <img src="images/bbc_icon.png" class="image" />
-                    "bbc_news_title"
-                </span>
-                <button class="btn btn-sm btn-success me-1">
-                    <i class="bi bi-eye" style="font-size: large"></i>
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-eye-slash" style="font-size: large"></i>
-                </button>
-            </div>
-
-            <div
-                class="
-                    bg-light
-                    p-1
-                    rounded-2
-                    ps-1
-                    d-flex
-                    align-items-center
-                    border
-                    mt-2
-                "
-            >
-                <span class="me-auto fs-2">
-                    <img src="images/wsj_icon.jpg" class="image" />
-                    "wsj_news_title"
-                </span>
-                <button class="btn btn-sm btn-success me-1">
-                    <i class="bi bi-eye" style="font-size: large"></i>
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-eye-slash" style="font-size: large"></i>
-                </button>
-            </div>
-
-            <div
-                class="
-                    bg-light
-                    p-1
-                    rounded-2
-                    ps-1
-                    d-flex
-                    align-items-center
-                    border
-                    mt-2
-                "
-            >
-                <span class="me-auto fs-2">
-                    <img src="images/naver_icon.png" class="image" />
-                    "naver_news_title"
-                </span>
-                <button class="btn btn-sm btn-success me-1">
-                    <i class="bi bi-eye" style="font-size: large"></i>
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-eye-slash" style="font-size: large"></i>
-                </button>
-            </div>
-        </div>
+        <div id="news_list"></div>
         <!-- script part -->
 
         <script>
+            /* sample entire_news_list  */
+            let test_entire_news_lists = {
+                bbc: {
+                    tech: [
+                        {
+                            title: "bbc tech news1 toooooooooooo longgggggggg titles okay?????????",
+                            body: "bbc tech news1 body",
+                            link: "",
+                        },
+                        {
+                            title: "The women fighting for digital equality2",
+                            body: `"If you don't have digital skills, you're going to be left behind," says Regina Honu, founder of Soronko Academy, a tech school for women and girls in Ghana. 
+
+"Before Covid, if we put out an invitation for people to sign up, we would have 100 or 200 women," she says.
+
+"After Covid, we had more than 2,000 women signing up.
+
+"Covid has made people realise that if you don't have digital skills, you're going to be left behind."
+
+Regina says many girls in Ghana might not even touch a computer until they go to school, or might have their internet access restricted by male family members.
+
+And in the era of social distancing, connecting with people who are lacking the tech or the experience is difficult. Video calls are not possible for students without a computer or high-end smartphone, or for whom the cost of data is an issue.
+
+Regina has instead found solutions that work for simpler phones.
+
+"We used WhatsApp and Telegram. We made calls to check in and find out how they were doing," she explains.
+
+But it has not been possible to reach everybody using such methods and she was pleased when lockdown easing meant they could "come back in person".`,
+                            link: "https://www.bbc.com/news/technology-57193791",
+                        },
+                    ],
+                    sci: [
+                        {
+                            title: "bbc sci news1",
+                            body: "bbc sci news1 body",
+                            link: "",
+                        },
+                    ],
+                    business: [
+                        {
+                            title: "bbc business news1",
+                            body: "bbc business news1 body",
+                            link: "",
+                        },
+                    ],
+                    world: [
+                        {
+                            title: "bbc world news1",
+                            body: "bbc world news1 body",
+                            link: "",
+                        },
+                    ],
+                },
+                wsj: {
+                    tech: [
+                        {
+                            title: "wsj tech news1",
+                            body: "wsj tech news1 body",
+                            link: "",
+                        },
+                        {
+                            title: "wsj tech news2",
+                            body: "wsj tech news2 body",
+                            link: "",
+                        },
+                    ],
+                    business: [
+                        {
+                            title: "wsj business news1",
+                            body: "wsj business news1 body",
+                            link: "",
+                        },
+                    ],
+                    world: [
+                        {
+                            title: "wsj world news1",
+                            body: "wsj world news1 body",
+                            link: "",
+                        },
+                    ],
+                },
+                naver: {
+                    tech: [
+                        {
+                            title: "naver tech news1",
+                            body: "naver tech news1 body",
+                            link: "",
+                        },
+                        {
+                            title: "naver tech news2",
+                            body: "naver tech news2 body",
+                            link: "",
+                        },
+                    ],
+                    business: [
+                        {
+                            title: "business tech news1",
+                            body: "business tech news1 body",
+                            link: "",
+                        },
+                    ],
+                    world: [
+                        {
+                            title: "world tech news1",
+                            body: "world tech news1 body",
+                            link: "",
+                        },
+                    ],
+                },
+            };
+
             // test //
             let query = document.querySelector("#news_list");
-            let checking_format = document.createElement("h1");
-            checking_format.textContent = JSON.stringify(entire_news_lists);
-            query.appendChild(checking_format);
+            let checking_format = document.createElement("h6");
+            checking_format.textContent = JSON.stringify(
+                test_entire_news_lists
+            );
+            //query.appendChild(checking_format);
             // test //
 
             function addNews(elem, portal) {
-                for (let i = 0; i < elem.lenght; i++) {
+                for (let i = 0; i < elem.length; i++) {
                     let div = document.createElement("div");
                     div.className =
                         "bg-light p-1 rounded-2 ps-1 d-flex align-items-center border mt-2";
@@ -211,12 +252,12 @@
                             img.src = "images/naver_icon.png";
                             break;
                         case 2:
-                            img.src = "images/wsj_icon.png";
+                            img.src = "images/wsj_icon.jpg";
                             break;
                     }
 
                     let span = document.createElement("span");
-                    span.className = "me-auto fs-2";
+                    span.className = "me-auto fs-4";
                     span.appendChild(img);
                     span.innerHTML += elem[i].title;
                     div.appendChild(span);
@@ -234,11 +275,34 @@
                         '<i class="bi bi-eye" style="font-size: large"></i>';
                     div.appendChild(buttontoSee);
                     buttontoSee.addEventListener("click", () => {
-                        /* remove news_lists and show news body */
-                        let new_div = document.createElement("div");
-                        newdiv.textContent = elem.body + elem.link;
+                        /* remove news_lists */
+                        let title_tag = document.querySelector("#title_tag");
                         let list_div = document.querySelector("#news_list");
                         removeAllChild(list_div);
+                        /* show news body */
+                        let new_div = document.createElement("div");
+                        let news_body = document.createElement("div");
+                        news_body.className =
+                            "bg-light p-1 rounded-2 ps-1 d-flex border mt-4 fs-5";
+                        news_body.textContent = elem[i].body;
+
+                        /* return button */
+                        let buttonReturn = document.createElement("button");
+                        buttonReturn.className = "btn btn-primary";
+                        buttonReturn.innerHTML =
+                            '<i class="bi bi-arrow-left" style="font-size: large">Go back to News Lists</i>';
+                        new_div.appendChild(buttonReturn);
+                        title_tag.innerHTML =
+                            '<i class="bi bi-newspaper"></i> ' + elem[i].title;
+                        buttonReturn.addEventListener("click", () => {
+                            new_div.remove();
+                            /* return to newslist */
+                            loadNews();
+                            title_tag.innerHTML =
+                                '<i class="bi bi-newspaper"></i> News Crawling Lists';
+                        });
+
+                        new_div.appendChild(news_body);
                         list_div.appendChild(new_div);
                     });
 
@@ -262,18 +326,18 @@
                 // entire news list handler
 
                 /* bbc */
-                addNews(entire_news_lists["bbc"]["business"], 0);
-                addNews(entire_news_lists["bbc"]["sci"], 0);
-                addNews(entire_news_lists["bbc"]["tech"], 0);
-                addNews(entire_news_lists["bbc"]["world"], 0);
+                addNews(test_entire_news_lists["bbc"]["business"], 0);
+                addNews(test_entire_news_lists["bbc"]["sci"], 0);
+                addNews(test_entire_news_lists["bbc"]["tech"], 0);
+                addNews(test_entire_news_lists["bbc"]["world"], 0);
                 /* naver */
-                addNews(entire_news_lists["naver"]["business"], 1);
-                addNews(entire_news_lists["naver"]["tech"], 1);
-                addNews(entire_news_lists["naver"]["world"], 1);
+                addNews(test_entire_news_lists["naver"]["business"], 1);
+                addNews(test_entire_news_lists["naver"]["tech"], 1);
+                addNews(test_entire_news_lists["naver"]["world"], 1);
                 /* wsj */
-                addNews(entire_news_lists["wsj"]["business"], 2);
-                addNews(entire_news_lists["wsj"]["tech"], 2);
-                addNews(entire_news_lists["wsj"]["world"], 2);
+                addNews(test_entire_news_lists["wsj"]["business"], 2);
+                addNews(test_entire_news_lists["wsj"]["tech"], 2);
+                addNews(test_entire_news_lists["wsj"]["world"], 2);
             }
 
             loadNews();
