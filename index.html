@@ -39,22 +39,10 @@
     <script src="crawler/crawling_wsj_world.js"></script>
     <script>
         async function test_async(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10){
-            await f1();
-            await f2();
-            await f3();
-            await f4();
-            await f5();
-            await f6();
-            await f7();
-            await f8();
-            await f9();
-            await f10();
-            return new Promise((resolve,reject) => {
-                resolve(entire_news_lists);
-            })
+            return Promise.all([f1(),f2(),f3(),f4(),f5(),f6(),f7(),f8(),f9(),f10()]);
         }
         test_async(getNewsList_bb,getNewsList_bs,getNewsList_bt,getNewsList_bw,getNewsList_nb,getNewsList_nt,getNewsList_nw,getNewsList_wb,getNewsList_wt,getNewsList_ww)
-        .then(elem => console.log(elem.bbc.tech));
+        .then(elem => console.log(elem));
     </script>
 
 

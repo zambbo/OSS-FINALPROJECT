@@ -2,7 +2,7 @@
 async function getNewsSrc(_news_url){
     try{
         const response = await axios.get(_news_url);
-        return response;   
+        return response;   //Promise
     } catch(error){
         console.error(error);
     }

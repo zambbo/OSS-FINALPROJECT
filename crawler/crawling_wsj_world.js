@@ -5,8 +5,7 @@ let news_url_ww = news_urls['wsj']['world'];
 
 getNewsList_ww = async () => {
     let newsList = [];
-    getNewsSrc(news_url_ww)
-    .then(html => {
+    const html = await getNewsSrc(news_url_ww)
         const $ = cheerio.load(html.data);
         let top_topic_list = $("#top-news").children("div").children("div:first").children();
 
@@ -16,18 +15,15 @@ getNewsList_ww = async () => {
                 return;
             newsList[idx] = news_link;
         });
-        
-        newsList
-        .forEach(elem => {
-            getNewsSrc(elem)
-            .then(
-                html2 => {
-                    const $2 = cheerio.load(html2.data);
-                    entire_news_lists['wsj']['world'].push($2('title').text());
-                    console.log($2('title').text());
-             });
-        });
-    });
-}
 
-getNewsList_ww();
+        let ret_news_lists = [];
+        for ( const elem of newsList){
+            const html2 = await getNewsSrc(elem)
+            const $2 = cheerio.load(html2.data);
+            let title = $2('title').text();
+            ret_news_lists.push(title);
+            //entire_news_lists['bbc']['business'].push($2('title').text());
+            //console.log(title);
+        }
+        return ret_news_lists;
+}
