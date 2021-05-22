@@ -16,6 +16,9 @@ getNewsList_nt = async () => {
         newsList[idx] = news_link;
     });
     
+    // 10개까지만 짜르기.
+    newsList = newsList.slice(0,10);
+    
     let ret_news_lists = [];
     for ( const elem of newsList){
         const html2 = await getNewsSrc(elem)
