@@ -1,192 +1,282 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Required meta tags always come first-->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- include bootstrap css-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="style/styles.css">
-    <title>News Crawling WebPage App</title>
-    <script src="crawler/news_urls.js"></script>
-    <script src="entire_news_list.js"></script>
-    <script src="translater/translater.js"></script>
-    <script>
-        const axios = require("axios");
-        const cheerio = require("cheerio");
-    </script>
-    <script src="crawler/get_news_src.js"></script>
-    <script src="crawler/crawling_bbc_business.js"></script>
-    <script src="crawler/crawling_bbc_sci.js"></script>
-    <script src="crawler/crawling_bbc_tech.js"></script>
-    <script src="crawler/crawling_bbc_world.js"></script>
-    <script src="crawler/crawling_naver_business.js"></script>
-    <script src="crawler/crawling_naver_tech.js"></script>
-    <script src="crawler/crawling_naver_world.js"></script>
-    <script src="crawler/crawling_wsj_business.js"></script>
-    <script src="crawler/crawling_wsj_tech.js"></script>
-    <script src="crawler/crawling_wsj_world.js"></script>
-    <script>
-        async function test_async(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10){
-            return Promise.all([f1(),f2(),f3(),f4(),f5(),f6(),f7(),f8(),f9(),f10()]);
-        }
-        test_async(getNewsList_bb,getNewsList_bs,getNewsList_bt,getNewsList_bw,getNewsList_nb,getNewsList_nt,getNewsList_nw,getNewsList_wb,getNewsList_wt,getNewsList_ww)
-        .then(x =>{
-            x.forEach((elem,idx) => {
-                switch(idx){
-                    case 0:
-                        entire_news_lists['bbc']['business'] = elem;
-                        break;
-                    case 1:
-                        entire_news_lists['bbc']['sci'] = elem;
-                        break;
-                    case 2:
-                        entire_news_lists['bbc']['tech'] = elem;
-                        break;
-                    case 3:
-                        entire_news_lists['bbc']['world'] = elem;
-                        break;
-                    case 4:
-                        entire_news_lists['naver']['business'] = elem;
-                        break;
-                    case 5:
-                        entire_news_lists['naver']['tech'] = elem;
-                        break;
-                    case 6:
-                        entire_news_lists['naver']['world'] = elem;
-                        break;
-                    case 7:
-                    entire_news_lists['wsj']['business'] = elem;
-                        break;
-                    case 8:
-                    entire_news_lists['wsj']['tech'] = elem;
-                        break;
-                    case 9:
-                    entire_news_lists['wsj']['world'] = elem;
-                        break;
-                    default:
-                        console.log("wrong argument!");
-                        break;
-                }
+    <head>
+        <!-- Required meta tags always come first-->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <!-- include bootstrap css-->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+        />
+        <link rel="stylesheet" href="style/styles.css" />
+        <title>News Crawling WebPage App</title>
+        <script src="crawler/news_urls.js"></script>
+        <script src="entire_news_list.js"></script>
+        <script src="translater/translater.js"></script>
+        <script>
+            const axios = require("axios");
+            const cheerio = require("cheerio");
+        </script>
+        <script src="crawler/get_news_src.js"></script>
+        <script src="crawler/crawling_bbc_business.js"></script>
+        <script src="crawler/crawling_bbc_sci.js"></script>
+        <script src="crawler/crawling_bbc_tech.js"></script>
+        <script src="crawler/crawling_bbc_world.js"></script>
+        <script src="crawler/crawling_naver_business.js"></script>
+        <script src="crawler/crawling_naver_tech.js"></script>
+        <script src="crawler/crawling_naver_world.js"></script>
+        <script src="crawler/crawling_wsj_business.js"></script>
+        <script src="crawler/crawling_wsj_tech.js"></script>
+        <script src="crawler/crawling_wsj_world.js"></script>
+        <script>
+            async function test_async(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10) {
+                return Promise.all([
+                    f1(),
+                    f2(),
+                    f3(),
+                    f4(),
+                    f5(),
+                    f6(),
+                    f7(),
+                    f8(),
+                    f9(),
+                    f10(),
+                ]);
+            }
+            test_async(
+                getNewsList_bb,
+                getNewsList_bs,
+                getNewsList_bt,
+                getNewsList_bw,
+                getNewsList_nb,
+                getNewsList_nt,
+                getNewsList_nw,
+                getNewsList_wb,
+                getNewsList_wt,
+                getNewsList_ww
+            ).then((x) => {
+                x.forEach((elem, idx) => {
+                    switch (idx) {
+                        case 0:
+                            entire_news_lists["bbc"]["business"].push(elem);
+                            break;
+                        case 1:
+                            entire_news_lists["bbc"]["sci"] = elem;
+                            break;
+                        case 2:
+                            entire_news_lists["bbc"]["tech"] = elem;
+                            break;
+                        case 3:
+                            entire_news_lists["bbc"]["world"] = elem;
+                            break;
+                        case 4:
+                            entire_news_lists["naver"]["business"] = elem;
+                            break;
+                        case 5:
+                            entire_news_lists["naver"]["tech"] = elem;
+                            break;
+                        case 6:
+                            entire_news_lists["naver"]["world"] = elem;
+                            break;
+                        case 7:
+                            entire_news_lists["wsj"]["business"] = elem;
+                            break;
+                        case 8:
+                            entire_news_lists["wsj"]["tech"] = elem;
+                            break;
+                        case 9:
+                            entire_news_lists["wsj"]["world"] = elem;
+                            break;
+                        default:
+                            console.log("wrong argument!");
+                            break;
+                    }
+                });
+                console.log(entire_news_lists);
             });
-            console.log(entire_news_lists);
-        });
-    </script>
+        </script>
+    </head>
+    <body style="background-color: rgb(237, 253, 224)">
+        <div id="title">
+            <h1 class="text-center">
+                <i class="bi bi-newspaper"></i> News Crawling Lists
+            </h1>
+        </div>
+        <div id="news_list">
+            <div
+                class="
+                    bg-light
+                    p-1
+                    rounded-2
+                    ps-1
+                    d-flex
+                    align-items-center
+                    border
+                    mt-2
+                "
+            >
+                <span class="me-auto fs-2">
+                    <img src="images/bbc_icon.png" class="image" />
+                    "bbc_news_title"
+                </span>
+                <button class="btn btn-sm btn-success me-1">
+                    <i class="bi bi-eye" style="font-size: large"></i>
+                </button>
+                <button class="btn btn-sm btn-danger">
+                    <i class="bi bi-eye-slash" style="font-size: large"></i>
+                </button>
+            </div>
 
+            <div
+                class="
+                    bg-light
+                    p-1
+                    rounded-2
+                    ps-1
+                    d-flex
+                    align-items-center
+                    border
+                    mt-2
+                "
+            >
+                <span class="me-auto fs-2">
+                    <img src="images/wsj_icon.jpg" class="image" />
+                    "wsj_news_title"
+                </span>
+                <button class="btn btn-sm btn-success me-1">
+                    <i class="bi bi-eye" style="font-size: large"></i>
+                </button>
+                <button class="btn btn-sm btn-danger">
+                    <i class="bi bi-eye-slash" style="font-size: large"></i>
+                </button>
+            </div>
 
-  </head>
-  <body style="background-color: rgb(237, 253, 224)">
-    <div
-      id="title"
-    >
-      <h1 class="text-center">
-        <i class="bi bi-newspaper"></i> News Crawling Lists
-      </h1>
-    </div>
-    <div
-      id="news_list"
-    >
-      <div
-        class="
-          task
-          bg-light
-          p-1
-          rounded-2
-          ps-1
-          d-flex
-          align-items-center
-          border
-          mt-2
-        "
-      >
-        <span class="me-auto fs-2">
-          <img
-            src="bbc_icon.png"
-            width="40"
-            height="40"
-            style="border-radius: 10px"
-          />
-          "bbc_news_title"
-        </span>
-        <button class="btn btn-sm btn-success me-1">
-          <i class="bi bi-eye" style="font-size: large"></i>
-        </button>
-        <button class="btn btn-sm btn-danger">
-          <i class="bi bi-eye-slash" style="font-size: large"></i>
-        </button>
-      </div>
+            <div
+                class="
+                    bg-light
+                    p-1
+                    rounded-2
+                    ps-1
+                    d-flex
+                    align-items-center
+                    border
+                    mt-2
+                "
+            >
+                <span class="me-auto fs-2">
+                    <img src="images/naver_icon.png" class="image" />
+                    "naver_news_title"
+                </span>
+                <button class="btn btn-sm btn-success me-1">
+                    <i class="bi bi-eye" style="font-size: large"></i>
+                </button>
+                <button class="btn btn-sm btn-danger">
+                    <i class="bi bi-eye-slash" style="font-size: large"></i>
+                </button>
+            </div>
+        </div>
+        <!-- script part -->
 
-      <div
-        class="
-          task
-          bg-light
-          p-1
-          rounded-2
-          ps-20
-          d-flex
-          align-items-center
-          border
-          mt-2
-        "
-      >
-        <span class="me-auto fs-2">
-          <img
-            src="cnn_icon.png"
-            width="40"
-            height="40"
-            style="border-radius: 10px"
-          />
-          "cnn_news_title"
-        </span>
-        <button class="btn btn-sm btn-success me-1">
-          <i class="bi bi-eye" style="font-size: large"></i>
-        </button>
-        <button class="btn btn-sm btn-danger">
-          <i class="bi bi-eye-slash" style="font-size: large"></i>
-        </button>
-      </div>
+        <script>
+            // test //
+            let query = document.querySelector("#news_list");
+            let checking_format = document.createElement("h1");
+            checking_format.textContent = JSON.stringify(entire_news_lists);
+            query.appendChild(checking_format);
+            // test //
 
-      <div
-        class="
-          task
-          bg-light
-          p-1
-          rounded-2
-          ps-20
-          d-flex
-          align-items-center
-          border
-          mt-2
-        "
-      >
-        <span class="me-auto fs-2">
-          <img
-            src="naver_icon.png"
-            width="40"
-            height="40"
-            style="border-radius: 10px"
-          />
-          "naver_news_title"
-        </span>
-        <button class="btn btn-sm btn-success me-1">
-          <i class="bi bi-eye" style="font-size: large"></i>
-        </button>
-        <button class="btn btn-sm btn-danger">
-          <i class="bi bi-eye-slash" style="font-size: large"></i>
-        </button>
-      </div>
-    </div>
-  </body>
+            function addNews(elem, portal) {
+                for (let i = 0; i < elem.lenght; i++) {
+                    let div = document.createElement("div");
+                    div.className =
+                        "bg-light p-1 rounded-2 ps-1 d-flex align-items-center border mt-2";
+
+                    let img = document.createElement("img");
+                    img.className = "image";
+                    switch (portal) {
+                        case 0:
+                            img.src = "images/bbc_icon.png";
+                            break;
+                        case 1:
+                            img.src = "images/naver_icon.png";
+                            break;
+                        case 2:
+                            img.src = "images/wsj_icon.png";
+                            break;
+                    }
+
+                    let span = document.createElement("span");
+                    span.className = "me-auto fs-2";
+                    span.appendChild(img);
+                    span.innerHTML += elem[i].title;
+                    div.appendChild(span);
+
+                    function removeAllChild(parent) {
+                        while (parent.firstChild) {
+                            parent.removeChild(parent.firstChild);
+                        }
+                    }
+
+                    /* buttontoSee */
+                    let buttontoSee = document.createElement("button");
+                    buttontoSee.className = "btn btn-sm btn-success me-1";
+                    buttontoSee.innerHTML =
+                        '<i class="bi bi-eye" style="font-size: large"></i>';
+                    div.appendChild(buttontoSee);
+                    buttontoSee.addEventListener("click", () => {
+                        /* remove news_lists and show news body */
+                        let new_div = document.createElement("div");
+                        newdiv.textContent = elem.body + elem.link;
+                        let list_div = document.querySelector("#news_list");
+                        removeAllChild(list_div);
+                        list_div.appendChild(new_div);
+                    });
+
+                    /* buttonRemove */
+                    let buttonRemove = document.createElement("button");
+                    buttonRemove.className = "btn btn-sm btn-danger";
+                    buttonRemove.innerHTML =
+                        '<i class="bi bi-eye-slash" style="font-size: large"></i>';
+                    div.appendChild(buttonRemove);
+                    buttonRemove.addEventListener("click", () => {
+                        div.remove();
+                        /* remove news */
+                    });
+
+                    let newslist = document.querySelector("#news_list");
+                    newslist.appendChild(div);
+                }
+            }
+
+            function loadNews() {
+                // entire news list handler
+
+                /* bbc */
+                addNews(entire_news_lists["bbc"]["business"], 0);
+                addNews(entire_news_lists["bbc"]["sci"], 0);
+                addNews(entire_news_lists["bbc"]["tech"], 0);
+                addNews(entire_news_lists["bbc"]["world"], 0);
+                /* naver */
+                addNews(entire_news_lists["naver"]["business"], 1);
+                addNews(entire_news_lists["naver"]["tech"], 1);
+                addNews(entire_news_lists["naver"]["world"], 1);
+                /* wsj */
+                addNews(entire_news_lists["wsj"]["business"], 2);
+                addNews(entire_news_lists["wsj"]["tech"], 2);
+                addNews(entire_news_lists["wsj"]["world"], 2);
+            }
+
+            loadNews();
+        </script>
+    </body>
 </html>
