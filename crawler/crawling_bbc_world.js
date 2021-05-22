@@ -12,8 +12,8 @@ async function getNewsList_bw(){
     let topStories = $('#top-stories').parent().children("div").children().children(".advert-page").children().children();
     
     topStories.each((idx,elem) =>{
-        const url_back = $(elem).find("div > div:nth-child(2) > div:first-child > a").attr("href");
-        if(!url_back)
+        const url_back = $(elem).find("div > a").attr("href");
+        if(!url_back|| url_back.slice(0,1) != '/')
             return;
         newsList[idx] = "https://www.bbc.com"+ url_back;
     })
