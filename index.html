@@ -112,91 +112,116 @@
                 <i class="bi bi-newspaper"></i> News Crawling Lists
             </h1>
         </div>
-        <div id="news_list">
-            <div
-                class="
-                    bg-light
-                    p-1
-                    rounded-2
-                    ps-1
-                    d-flex
-                    align-items-center
-                    border
-                    mt-2
-                "
-            >
-                <span class="me-auto fs-2">
-                    <img src="images/bbc_icon.png" class="image" />
-                    "bbc_news_title"
-                </span>
-                <button class="btn btn-sm btn-success me-1">
-                    <i class="bi bi-eye" style="font-size: large"></i>
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-eye-slash" style="font-size: large"></i>
-                </button>
-            </div>
-
-            <div
-                class="
-                    bg-light
-                    p-1
-                    rounded-2
-                    ps-1
-                    d-flex
-                    align-items-center
-                    border
-                    mt-2
-                "
-            >
-                <span class="me-auto fs-2">
-                    <img src="images/wsj_icon.jpg" class="image" />
-                    "wsj_news_title"
-                </span>
-                <button class="btn btn-sm btn-success me-1">
-                    <i class="bi bi-eye" style="font-size: large"></i>
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-eye-slash" style="font-size: large"></i>
-                </button>
-            </div>
-
-            <div
-                class="
-                    bg-light
-                    p-1
-                    rounded-2
-                    ps-1
-                    d-flex
-                    align-items-center
-                    border
-                    mt-2
-                "
-            >
-                <span class="me-auto fs-2">
-                    <img src="images/naver_icon.png" class="image" />
-                    "naver_news_title"
-                </span>
-                <button class="btn btn-sm btn-success me-1">
-                    <i class="bi bi-eye" style="font-size: large"></i>
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-eye-slash" style="font-size: large"></i>
-                </button>
-            </div>
-        </div>
+        <div id="news_list"></div>
         <!-- script part -->
 
         <script>
+            /* sample entire_news_list */
+            let test_entire_news_lists = {
+                bbc: {
+                    tech: [
+                        {
+                            title: "bbc tech news1",
+                            body: "bbc tech news1 body",
+                            link: "",
+                        },
+                        {
+                            title: "bbc tech news2",
+                            body: "bbc tech news2 body",
+                            link: "",
+                        },
+                    ],
+                    sci: [
+                        {
+                            title: "bbc sci news1",
+                            body: "bbc sci news1 body",
+                            link: "",
+                        },
+                    ],
+                    business: [
+                        {
+                            title: "bbc business news1",
+                            body: "bbc business news1 body",
+                            link: "",
+                        },
+                    ],
+                    world: [
+                        {
+                            title: "bbc world news1",
+                            body: "bbc world news1 body",
+                            link: "",
+                        },
+                    ],
+                },
+                wsj: {
+                    tech: [
+                        {
+                            title: "wsj tech news1",
+                            body: "wsj tech news1 body",
+                            link: "",
+                        },
+                        {
+                            title: "wsj tech news2",
+                            body: "wsj tech news2 body",
+                            link: "",
+                        },
+                    ],
+                    business: [
+                        {
+                            title: "wsj business news1",
+                            body: "wsj business news1 body",
+                            link: "",
+                        },
+                    ],
+                    world: [
+                        {
+                            title: "wsj world news1",
+                            body: "wsj world news1 body",
+                            link: "",
+                        },
+                    ],
+                },
+                naver: {
+                    tech: [
+                        {
+                            title: "naver tech news1",
+                            body: "naver tech news1 body",
+                            link: "",
+                        },
+                        {
+                            title: "naver tech news2",
+                            body: "naver tech news2 body",
+                            link: "",
+                        },
+                    ],
+                    business: [
+                        {
+                            title: "business tech news1",
+                            body: "business tech news1 body",
+                            link: "",
+                        },
+                    ],
+                    world: [
+                        {
+                            title: "world tech news1",
+                            body: "world tech news1 body",
+                            link: "",
+                        },
+                    ],
+                },
+            };
+
             // test //
             let query = document.querySelector("#news_list");
-            let checking_format = document.createElement("h1");
-            checking_format.textContent = JSON.stringify(entire_news_lists);
+            let checking_format = document.createElement("h6");
+            checking_format.textContent = JSON.stringify(
+                test_entire_news_lists
+            );
             query.appendChild(checking_format);
             // test //
 
             function addNews(elem, portal) {
-                for (let i = 0; i < elem.lenght; i++) {
+                for (let i = 0; i < elem.length; i++) {
                     let div = document.createElement("div");
                     div.className =
                         "bg-light p-1 rounded-2 ps-1 d-flex align-items-center border mt-2";
@@ -211,7 +236,7 @@
                             img.src = "images/naver_icon.png";
                             break;
                         case 2:
-                            img.src = "images/wsj_icon.png";
+                            img.src = "images/wsj_icon.jpg";
                             break;
                     }
 
@@ -234,11 +259,27 @@
                         '<i class="bi bi-eye" style="font-size: large"></i>';
                     div.appendChild(buttontoSee);
                     buttontoSee.addEventListener("click", () => {
-                        /* remove news_lists and show news body */
-                        let new_div = document.createElement("div");
-                        newdiv.textContent = elem.body + elem.link;
+                        /* remove news_lists */
                         let list_div = document.querySelector("#news_list");
                         removeAllChild(list_div);
+                        /* show news body */
+                        let new_div = document.createElement("div");
+                        let news_body = document.createElement("h4");
+                        news_body.textContent = elem[i].body;
+
+                        /* return button */
+                        let buttonReturn = document.createElement("button");
+                        buttonReturn.className = "btn btn-sm btn-danger";
+                        buttonReturn.innerHTML =
+                            '<i class="bi bi-eye-slash" style="font-size: large"></i>';
+                        new_div.appendChild(buttonReturn);
+                        buttonReturn.addEventListener("click", () => {
+                            new_div.remove();
+                            /* return to newslist */
+                            loadNews();
+                        });
+
+                        new_div.appendChild(news_body);
                         list_div.appendChild(new_div);
                     });
 
@@ -262,18 +303,18 @@
                 // entire news list handler
 
                 /* bbc */
-                addNews(entire_news_lists["bbc"]["business"], 0);
-                addNews(entire_news_lists["bbc"]["sci"], 0);
-                addNews(entire_news_lists["bbc"]["tech"], 0);
-                addNews(entire_news_lists["bbc"]["world"], 0);
+                addNews(test_entire_news_lists["bbc"]["business"], 0);
+                addNews(test_entire_news_lists["bbc"]["sci"], 0);
+                addNews(test_entire_news_lists["bbc"]["tech"], 0);
+                addNews(test_entire_news_lists["bbc"]["world"], 0);
                 /* naver */
-                addNews(entire_news_lists["naver"]["business"], 1);
-                addNews(entire_news_lists["naver"]["tech"], 1);
-                addNews(entire_news_lists["naver"]["world"], 1);
+                addNews(test_entire_news_lists["naver"]["business"], 1);
+                addNews(test_entire_news_lists["naver"]["tech"], 1);
+                addNews(test_entire_news_lists["naver"]["world"], 1);
                 /* wsj */
-                addNews(entire_news_lists["wsj"]["business"], 2);
-                addNews(entire_news_lists["wsj"]["tech"], 2);
-                addNews(entire_news_lists["wsj"]["world"], 2);
+                addNews(test_entire_news_lists["wsj"]["business"], 2);
+                addNews(test_entire_news_lists["wsj"]["tech"], 2);
+                addNews(test_entire_news_lists["wsj"]["world"], 2);
             }
 
             loadNews();
