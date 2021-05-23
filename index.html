@@ -46,129 +46,109 @@
                 <i class="bi bi-newspaper"></i> News Crawling Lists
             </h1>
         </div>
+        <div id="Category" class="d-flex">
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="option1"
+                    onclick="TechType();"
+                    checked="checked"
+                    ;
+                />
+                <label class="form-check-label" for="inlineCheckbox1"
+                    >Tech
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox2"
+                    value="option2"
+                    onclick="BusinessType();"
+                    checked="checked"
+                    ;
+                />
+                <label class="form-check-label" for="inlineCheckbox2"
+                    >Business
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox3"
+                    value="option2"
+                    onclick="WorldType();"
+                    checked="checked"
+                    ;
+                />
+                <label class="form-check-label" for="inlineCheckbox3"
+                    >World
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="inlineCheckbox4"
+                    value="option2"
+                    onclick="SciType();"
+                    checked="checked"
+                    ;
+                />
+                <label class="form-check-label" for="inlineCheckbox4"
+                    >Sci
+                </label>
+            </div>
+        </div>
         <div id="news_list"></div>
         <!-- script part -->
 
         <script>
-            /* sample entire_news_list */
-            let test_entire_news_lists = {
-                bbc: {
-                    tech: [
-                        {
-                            title: "bbc tech news1 toooooooooooo longgggggggg titles okay?????????",
-                            body: "bbc tech news1 body",
-                            link: "",
-                        },
-                        {
-                            title: "The women fighting for digital equality2",
-                            body: `"If you don't have digital skills, you're going to be left behind," says Regina Honu, founder of Soronko Academy, a tech school for women and girls in Ghana. 
-
-"Before Covid, if we put out an invitation for people to sign up, we would have 100 or 200 women," she says.
-
-"After Covid, we had more than 2,000 women signing up.
-
-"Covid has made people realise that if you don't have digital skills, you're going to be left behind."
-
-Regina says many girls in Ghana might not even touch a computer until they go to school, or might have their internet access restricted by male family members.
-
-And in the era of social distancing, connecting with people who are lacking the tech or the experience is difficult. Video calls are not possible for students without a computer or high-end smartphone, or for whom the cost of data is an issue.
-
-Regina has instead found solutions that work for simpler phones.
-
-"We used WhatsApp and Telegram. We made calls to check in and find out how they were doing," she explains.
-
-But it has not been possible to reach everybody using such methods and she was pleased when lockdown easing meant they could "come back in person".`,
-                            link: "https://www.bbc.com/news/technology-57193791",
-                        },
-                    ],
-                    sci: [
-                        {
-                            title: "bbc sci news1",
-                            body: "bbc sci news1 body",
-                            link: "",
-                        },
-                    ],
-                    business: [
-                        {
-                            title: "bbc business news1",
-                            body: "bbc business news1 body",
-                            link: "",
-                        },
-                    ],
-                    world: [
-                        {
-                            title: "bbc world news1",
-                            body: "bbc world news1 body",
-                            link: "",
-                        },
-                    ],
-                },
-                wsj: {
-                    tech: [
-                        {
-                            title: "wsj tech news1",
-                            body: "wsj tech news1 body",
-                            link: "",
-                        },
-                        {
-                            title: "wsj tech news2",
-                            body: "wsj tech news2 body",
-                            link: "",
-                        },
-                    ],
-                    business: [
-                        {
-                            title: "wsj business news1",
-                            body: "wsj business news1 body",
-                            link: "",
-                        },
-                    ],
-                    world: [
-                        {
-                            title: "wsj world news1",
-                            body: "wsj world news1 body",
-                            link: "",
-                        },
-                    ],
-                },
-                naver: {
-                    tech: [
-                        {
-                            title: "naver tech news1",
-                            body: "naver tech news1 body",
-                            link: "",
-                        },
-                        {
-                            title: "naver tech news2",
-                            body: "naver tech news2 body",
-                            link: "",
-                        },
-                    ],
-                    business: [
-                        {
-                            title: "business tech news1",
-                            body: "business tech news1 body",
-                            link: "",
-                        },
-                    ],
-                    world: [
-                        {
-                            title: "world tech news1",
-                            body: "world tech news1 body",
-                            link: "",
-                        },
-                    ],
-                },
+            /*                  Category                 */
+            /*     defualt:     show all                 */
+            /*     type ture :  show category            */
+            /*     type false:  don't show               */
+            let Category = {
+                tech: true,
+                business: true,
+                world: true,
+                sci: true,
             };
 
-            // test //
-            let query = document.querySelector("#news_list");
-            let checking_format = document.createElement("h6");
-            checking_format.textContent = JSON.stringify(
-                test_entire_news_lists
-            );
-            //query.appendChild(checking_format);
-            // test //
+            function removeAllChild(parent) {
+                while (parent.firstChild) {
+                    parent.removeChild(parent.firstChild);
+                }
+            }
+
+            function TechType() {
+                Category.tech = !Category.tech;
+                let update_list = document.querySelector("#news_list");
+                removeAllChild(update_list);
+                loadNews();
+            }
+            function BusinessType() {
+                Category.business = !Category.business;
+                let update_list = document.querySelector("#news_list");
+                removeAllChild(update_list);
+                loadNews();
+            }
+            function WorldType() {
+                Category.world = !Category.world;
+                let update_list = document.querySelector("#news_list");
+                removeAllChild(update_list);
+                loadNews();
+            }
+            function SciType() {
+                Category.sci = !Category.sci;
+                let update_list = document.querySelector("#news_list");
+                removeAllChild(update_list);
+                loadNews();
+            }
 
             function addNews(elem, portal) {
                 for (let i = 0; i < elem.length; i++) {
@@ -203,12 +183,6 @@ But it has not been possible to reach everybody using such methods and she was p
                     //span.innerHTML += elem[i].title;
                     div.appendChild(span);
                     div.appendChild(title_div);
-
-                    function removeAllChild(parent) {
-                        while (parent.firstChild) {
-                            parent.removeChild(parent.firstChild);
-                        }
-                    }
 
                     /* buttontoSee */
                     let buttontoSee = document.createElement("button");
@@ -280,33 +254,38 @@ But it has not been possible to reach everybody using such methods and she was p
             function loadNews() {
                 // entire news list handler
 
-                // /* bbc */
-                // addNews(test_entire_news_lists["bbc"]["business"], 0);
-                // addNews(test_entire_news_lists["bbc"]["sci"], 0);
-                // addNews(test_entire_news_lists["bbc"]["tech"], 0);
-                // addNews(test_entire_news_lists["bbc"]["world"], 0);
-                // /* naver */
-                // addNews(test_entire_news_lists["naver"]["business"], 1);
-                // addNews(test_entire_news_lists["naver"]["tech"], 1);
-                // addNews(test_entire_news_lists["naver"]["world"], 1);
-                // /* wsj */
-                // addNews(test_entire_news_lists["wsj"]["business"], 2);
-                // addNews(test_entire_news_lists["wsj"]["tech"], 2);
-                // addNews(test_entire_news_lists["wsj"]["world"], 2);
+                if (Category.tech === true) {
+                    addNews(entire_news_lists["bbc"]["tech"], 0);
+                    addNews(entire_news_lists["naver"]["tech"], 1);
+                    addNews(entire_news_lists["wsj"]["tech"], 2);
+                }
+                if (Category.business) {
+                    addNews(entire_news_lists["bbc"]["business"], 0);
+                    addNews(entire_news_lists["naver"]["business"], 1);
+                    addNews(entire_news_lists["wsj"]["business"], 2);
+                }
+                if (Category.world) {
+                    addNews(entire_news_lists["bbc"]["world"], 0);
+                    addNews(entire_news_lists["naver"]["world"], 1);
+                    addNews(entire_news_lists["wsj"]["world"], 2);
+                }
+                if (Category.sci) {
+                    addNews(entire_news_lists["bbc"]["sci"], 0);
+                }
 
                 /* bbc */
-                addNews(entire_news_lists["bbc"]["business"], 0);
-                addNews(entire_news_lists["bbc"]["sci"], 0);
-                addNews(entire_news_lists["bbc"]["tech"], 0);
-                addNews(entire_news_lists["bbc"]["world"], 0);
+                //addNews(entire_news_lists["bbc"]["business"], 0);
+                //addNews(entire_news_lists["bbc"]["sci"], 0);
+                //addNews(entire_news_lists["bbc"]["tech"], 0);
+                //addNews(entire_news_lists["bbc"]["world"], 0);
                 /* naver*/
-                addNews(entire_news_lists["naver"]["business"], 1);
-                addNews(entire_news_lists["naver"]["tech"], 1);
-                addNews(entire_news_lists["naver"]["world"], 1);
+                //addNews(entire_news_lists["naver"]["business"], 1);
+                //addNews(entire_news_lists["naver"]["tech"], 1);
+                //addNews(entire_news_lists["naver"]["world"], 1);
                 /* wsj */
-                addNews(entire_news_lists["wsj"]["business"], 2);
-                addNews(entire_news_lists["wsj"]["tech"], 2);
-                addNews(entire_news_lists["wsj"]["world"], 2);
+                //addNews(entire_news_lists["wsj"]["business"], 2);
+                //addNews(entire_news_lists["wsj"]["tech"], 2);
+                //addNews(entire_news_lists["wsj"]["world"], 2);
             }
             storing().then((x) => loadNews());
         </script>
