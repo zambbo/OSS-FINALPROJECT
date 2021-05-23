@@ -17,10 +17,16 @@ You can see like this
 
 ![main screen](main_screen.png)
 
-If you go into one of them, you will see the article.
-There are also the links for that article too.
+There are **green, red buttons**.  
+
+You can delete particular articles by clicking **red button**.
+
+You can see the article contents when you **green button**.
+There are also the link for that article too.
 
 ![article screen](sub_screen.png)
+
+
 
 
 ## License
