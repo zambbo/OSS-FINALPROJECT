@@ -191,10 +191,18 @@ But it has not been possible to reach everybody using such methods and she was p
                     }
 
                     let span = document.createElement("span");
-                    span.className = "me-auto fs-4";
+                    span.className = "me-auto fs-5";
                     span.appendChild(img);
-                    span.innerHTML += elem[i].title;
+                    if (elem[i].title == "") {
+                        continue;
+                    }
+                    let title_div = document.createElement("div");
+                    title_div.className = "me-auto fs-5";
+                    title_div.align = "left";
+                    title_div.textContent = elem[i].title;
+                    //span.innerHTML += elem[i].title;
                     div.appendChild(span);
+                    div.appendChild(title_div);
 
                     function removeAllChild(parent) {
                         while (parent.firstChild) {
@@ -216,9 +224,16 @@ But it has not been possible to reach everybody using such methods and she was p
                         /* show news body */
                         let new_div = document.createElement("div");
                         let news_body = document.createElement("div");
+                        let news_link = document.createElement("a");
                         news_body.className =
                             "bg-light p-1 rounded-2 ps-1 d-flex border mt-4 fs-5";
                         news_body.textContent = elem[i].body;
+
+                        news_link.className =
+                            "bg-light p-1 rounded-2 ps-1 d-flex border mt-4 fs-5";
+                        news_link.href = elem[i].link;
+                        news_link.textContent = "See Source in New Explorer";
+                        news_link.target = "_blank";
 
                         /* return button */
                         let buttonReturn = document.createElement("button");
@@ -237,6 +252,7 @@ But it has not been possible to reach everybody using such methods and she was p
                         });
 
                         new_div.appendChild(news_body);
+                        new_div.appendChild(news_link);
                         list_div.appendChild(new_div);
                     });
 
@@ -249,6 +265,7 @@ But it has not been possible to reach everybody using such methods and she was p
                     buttonRemove.addEventListener("click", () => {
                         div.remove();
                         /* remove news */
+                        elem[i].title = "";
                     });
 
                     let newslist = document.querySelector("#news_list");
@@ -278,16 +295,16 @@ But it has not been possible to reach everybody using such methods and she was p
                 addNews(entire_news_lists["bbc"]["sci"], 0);
                 addNews(entire_news_lists["bbc"]["tech"], 0);
                 addNews(entire_news_lists["bbc"]["world"], 0);
-                /* naver*/ 
+                /* naver*/
                 addNews(entire_news_lists["naver"]["business"], 1);
                 addNews(entire_news_lists["naver"]["tech"], 1);
                 addNews(entire_news_lists["naver"]["world"], 1);
-                /* wsj */ 
+                /* wsj */
                 addNews(entire_news_lists["wsj"]["business"], 2);
                 addNews(entire_news_lists["wsj"]["tech"], 2);
                 addNews(entire_news_lists["wsj"]["world"], 2);
             }
-            storing().then(x => loadNews());
+            storing().then((x) => loadNews());
         </script>
     </body>
 </html>
