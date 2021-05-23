@@ -14,4 +14,8 @@ We also show each theme hot topics, such as **science, technology, world, busine
 
 ## Start the program
 You can see like this
-![main screen example](mainscreen.png)
+![main screen](mainscreen.png)
+
+If you go into one of them, you will see the article.
+There are also the links for that article too.
+![article screen](subscreen.png)
