@@ -25,4 +25,6 @@ There are also the links for that article too.
 
 ## License
 
+Copyright (c) Microsoft Corporation. All rights reserved.
 
+Licensed under the [MIT](LICENSE.txt) license.
