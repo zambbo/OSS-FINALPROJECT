@@ -29,7 +29,7 @@ function storing(){
             x.forEach((elem, idx) => {
                 switch (idx) {
                     case 0:
-                        entire_news_lists["bbc"]["business"].push(elem);
+                        entire_news_lists["bbc"]["business"] = elem;
                         break;
                     case 1:
                         entire_news_lists["bbc"]["sci"] = elem;

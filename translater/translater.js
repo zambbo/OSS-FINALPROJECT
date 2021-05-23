@@ -27,3 +27,7 @@ async function translateEn2Ko(article_str){
             console.log(error);
         }
 }
+
+function translate(article_str){
+    setTimeout(translateEn2Ko(article_str),1000);
+}
