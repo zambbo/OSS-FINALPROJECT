@@ -21,12 +21,15 @@ getNewsList_nw = async () => {
 
     let ret_news_lists = [];
     for ( const elem of newsList){
+        let body_lst = [];
         const html2 = await getNewsSrc(elem)
         const $2 = cheerio.load(html2.data);
-        let title = $2('title').text();
-        ret_news_lists.push(title);
-        //entire_news_lists['bbc']['business'].push($2('title').text());
-        //console.log(title);
+        const title = $2('#articleTitle').text();
+        let body_list = $2('#articleBodyContents')
+        body_list.each((idx,val) => body_lst.push($2(val).text()));
+        let body = body_lst.join('');
+        let link = elem;
+        ret_news_lists.push({title,body,link});
     }
     return ret_news_lists;
 }

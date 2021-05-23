@@ -38,73 +38,7 @@
         <script src="crawler/crawling_wsj_business.js"></script>
         <script src="crawler/crawling_wsj_tech.js"></script>
         <script src="crawler/crawling_wsj_world.js"></script>
-        <script>
-            async function test_async(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10) {
-                return Promise.all([
-                    f1(),
-                    f2(),
-                    f3(),
-                    f4(),
-                    f5(),
-                    f6(),
-                    f7(),
-                    f8(),
-                    f9(),
-                    f10(),
-                ]);
-            }
-            test_async(
-                getNewsList_bb,
-                getNewsList_bs,
-                getNewsList_bt,
-                getNewsList_bw,
-                getNewsList_nb,
-                getNewsList_nt,
-                getNewsList_nw,
-                getNewsList_wb,
-                getNewsList_wt,
-                getNewsList_ww
-            ).then((x) => {
-                x.forEach((elem, idx) => {
-                    switch (idx) {
-                        case 0:
-                            entire_news_lists["bbc"]["business"].push(elem);
-                            break;
-                        case 1:
-                            entire_news_lists["bbc"]["sci"] = elem;
-                            break;
-                        case 2:
-                            entire_news_lists["bbc"]["tech"] = elem;
-                            break;
-                        case 3:
-                            entire_news_lists["bbc"]["world"] = elem;
-                            break;
-                        case 4:
-                            entire_news_lists["naver"]["business"] = elem;
-                            break;
-                        case 5:
-                            entire_news_lists["naver"]["tech"] = elem;
-                            break;
-                        case 6:
-                            entire_news_lists["naver"]["world"] = elem;
-                            break;
-                        case 7:
-                            entire_news_lists["wsj"]["business"] = elem;
-                            break;
-                        case 8:
-                            entire_news_lists["wsj"]["tech"] = elem;
-                            break;
-                        case 9:
-                            entire_news_lists["wsj"]["world"] = elem;
-                            break;
-                        default:
-                            console.log("wrong argument!");
-                            break;
-                    }
-                });
-                console.log(entire_news_lists);
-            });
-        </script>
+        <script src="etc/store_news.js"></script>
     </head>
     <body style="background-color: rgb(237, 253, 224)">
         <div id="title">
@@ -325,22 +259,35 @@ But it has not been possible to reach everybody using such methods and she was p
             function loadNews() {
                 // entire news list handler
 
-                /* bbc */
-                addNews(test_entire_news_lists["bbc"]["business"], 0);
-                addNews(test_entire_news_lists["bbc"]["sci"], 0);
-                addNews(test_entire_news_lists["bbc"]["tech"], 0);
-                addNews(test_entire_news_lists["bbc"]["world"], 0);
-                /* naver */
-                addNews(test_entire_news_lists["naver"]["business"], 1);
-                addNews(test_entire_news_lists["naver"]["tech"], 1);
-                addNews(test_entire_news_lists["naver"]["world"], 1);
-                /* wsj */
-                addNews(test_entire_news_lists["wsj"]["business"], 2);
-                addNews(test_entire_news_lists["wsj"]["tech"], 2);
-                addNews(test_entire_news_lists["wsj"]["world"], 2);
-            }
+                // /* bbc */
+                // addNews(test_entire_news_lists["bbc"]["business"], 0);
+                // addNews(test_entire_news_lists["bbc"]["sci"], 0);
+                // addNews(test_entire_news_lists["bbc"]["tech"], 0);
+                // addNews(test_entire_news_lists["bbc"]["world"], 0);
+                // /* naver */
+                // addNews(test_entire_news_lists["naver"]["business"], 1);
+                // addNews(test_entire_news_lists["naver"]["tech"], 1);
+                // addNews(test_entire_news_lists["naver"]["world"], 1);
+                // /* wsj */
+                // addNews(test_entire_news_lists["wsj"]["business"], 2);
+                // addNews(test_entire_news_lists["wsj"]["tech"], 2);
+                // addNews(test_entire_news_lists["wsj"]["world"], 2);
 
-            loadNews();
+                /* bbc */
+                addNews(entire_news_lists["bbc"]["business"], 0);
+                addNews(entire_news_lists["bbc"]["sci"], 0);
+                addNews(entire_news_lists["bbc"]["tech"], 0);
+                addNews(entire_news_lists["bbc"]["world"], 0);
+                /* naver*/ 
+                addNews(entire_news_lists["naver"]["business"], 1);
+                addNews(entire_news_lists["naver"]["tech"], 1);
+                addNews(entire_news_lists["naver"]["world"], 1);
+                /* wsj */ 
+                addNews(entire_news_lists["wsj"]["business"], 2);
+                addNews(entire_news_lists["wsj"]["tech"], 2);
+                addNews(entire_news_lists["wsj"]["world"], 2);
+            }
+            storing().then(x => loadNews());
         </script>
     </body>
 </html>
