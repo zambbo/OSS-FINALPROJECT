@@ -191,6 +191,11 @@
                         '<i class="bi bi-eye" style="font-size: large"></i>';
                     div.appendChild(buttontoSee);
                     buttontoSee.addEventListener("click", () => {
+                        /* disable category checkbox */
+                        let categor_div = document.querySelector("#Category");
+                        let save_innerHTML = categor_div.innerHTML;
+                        categor_div.remove();
+
                         /* remove news_lists */
                         let title_tag = document.querySelector("#title_tag");
                         let list_div = document.querySelector("#news_list");
@@ -221,6 +226,31 @@
                             '<i class="bi bi-newspaper"></i> ' + elem[i].title;
                         buttonReturn.addEventListener("click", () => {
                             new_div.remove();
+                            /* show category list agian */
+                            let reboot_category_div =
+                                document.createElement("div");
+                            reboot_category_div.id = "Category";
+                            reboot_category_div.className = "d-flex";
+                            reboot_category_div.innerHTML = save_innerHTML;
+                            document.body.insertBefore(
+                                reboot_category_div,
+                                document.querySelector("#news_list")
+                            );
+                            let techbox =
+                                document.querySelector("#inlineCheckbox1");
+                            let businessbox =
+                                document.querySelector("#inlineCheckbox2");
+                            let worldbox =
+                                document.querySelector("#inlineCheckbox3");
+                            let scibox =
+                                document.querySelector("#inlineCheckbox4");
+                            techbox.checked = Category.tech ? "checked" : "";
+                            businessbox.checked = Category.business
+                                ? "checked"
+                                : "";
+                            worldbox.checked = Category.world ? "checked" : "";
+                            scibox.checked = Category.sci ? "checked" : "";
+
                             /* return to newslist */
                             loadNews();
                             title_tag.innerHTML =
