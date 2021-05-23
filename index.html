@@ -40,7 +40,7 @@
         <script src="crawler/crawling_wsj_world.js"></script>
         <script src="etc/store_news.js"></script>
     </head>
-    <body style="background-color: rgb(237, 253, 224)">
+    <body style="background-color: rgb(224, 241, 253)">
         <div id="title">
             <h1 class="text-center" id="title_tag">
                 <i class="bi bi-newspaper"></i> News Crawling Lists
@@ -229,18 +229,20 @@ But it has not been possible to reach everybody using such methods and she was p
                             "bg-light p-1 rounded-2 ps-1 d-flex border mt-4 fs-5";
                         news_body.textContent = elem[i].body;
 
-                        news_link.className =
-                            "bg-light p-1 rounded-2 ps-1 d-flex border mt-4 fs-5";
+                        news_link.className = "btn btn-secondary";
                         news_link.href = elem[i].link;
-                        news_link.textContent = "See Source in New Explorer";
+                        news_link.innerHTML =
+                            '<i class="bi bi-link-45deg"></i>';
                         news_link.target = "_blank";
 
+                        button_div = document.createElement("div");
+                        button_div.className = "d-flex justify-content-between";
                         /* return button */
                         let buttonReturn = document.createElement("button");
                         buttonReturn.className = "btn btn-primary";
                         buttonReturn.innerHTML =
                             '<i class="bi bi-arrow-left" style="font-size: large">Go back to News Lists</i>';
-                        new_div.appendChild(buttonReturn);
+
                         title_tag.innerHTML =
                             '<i class="bi bi-newspaper"></i> ' + elem[i].title;
                         buttonReturn.addEventListener("click", () => {
@@ -251,8 +253,10 @@ But it has not been possible to reach everybody using such methods and she was p
                                 '<i class="bi bi-newspaper"></i> News Crawling Lists';
                         });
 
+                        button_div.appendChild(buttonReturn);
+                        button_div.appendChild(news_link);
+                        new_div.appendChild(button_div);
                         new_div.appendChild(news_body);
-                        new_div.appendChild(news_link);
                         list_div.appendChild(new_div);
                     });
 
