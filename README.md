@@ -31,7 +31,12 @@ There are also the link for that article too.
 [Group12 Demo Video](https://youtu.be/TZlyC6lbsX4)
 
 ## Installation Instruction
-You can download this app through this [Download "Today-news"](https://drive.google.com/file/d/12GHI4Z2KvA3SkfKpDNVOlR72sBVIH6Hk/view?usp=sharing)
+You have two ways for this!
+
+* You can download this app through this [Download "Today-news"](https://drive.google.com/file/d/12GHI4Z2KvA3SkfKpDNVOlR72sBVIH6Hk/view?usp=sharing)
+* After **git clone** this repositry, do **npm install**. And then, if you do **npm start**, you can start this app
+
+
 ## Version
 1.0.0
 
