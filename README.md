@@ -12,7 +12,7 @@ We also show each theme hot topics, such as **science, technology, world, busine
 
 
 
-## Start the program
+## How to use
 You can see like this
 
 ![main screen](main_screen.png)
