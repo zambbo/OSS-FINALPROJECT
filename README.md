@@ -33,9 +33,37 @@ There are also the link for that article too.
 ## Installation Instruction
 You have two ways for this!
 
-* You can download this app through this [Download "Today-news" application](https://drive.google.com/file/d/1cliYb3ZYZ-w3qLhQJZwJoHXa-mFs7B0y/view?usp=sharing)
+* You can download this app through this [Download "Today-news" application](https://drive.google.com/file/d/1mgjjtm5pwPxhAWdS9MZk5pOuOZa5dUGu/view?usp=sharing)
+![down_from_link](images/down_from_link.png)
 
-* After **git clone** this repositry, do **npm install**. And then, if you do **npm start**, you can start this app
+You can run this app by run the **oss_finalproject.exe**
+
+* After **git clone** this repositry, do ```npm install```. And then, if you do ```npm start```, you can start this app
+
+### Let me show in detail.
+
+### step 1
+* Open the new folder where you want to download this application.
+Then, do ```git clone [This repositry https]```
+
+![install_step1](images/install_step1.png)
+
+### step 2
+* Then, a folder will appear. Go into that directory by entering ```cd OSS_FINALPROJECT```.
+After that, do ```npm install```.
+
+![install_step2](images/install_step2.png)
+
+### step 3
+* After you install successfully, Just enter **npm start**
+Then a new window will pop up.
+
+![install_step3](images/install_step3.png)
+
+```vscode
+npm install
+```
+
 
 
 ## Version
