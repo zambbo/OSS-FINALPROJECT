@@ -33,7 +33,8 @@ There are also the link for that article too.
 ## Installation Instruction
 You have two ways for this!
 
-* You can download this app through this [Download "Today-news"](https://drive.google.com/file/d/12GHI4Z2KvA3SkfKpDNVOlR72sBVIH6Hk/view?usp=sharing)
+* You can download this app through this [Download "Today-news" application](https://drive.google.com/file/d/1cliYb3ZYZ-w3qLhQJZwJoHXa-mFs7B0y/view?usp=sharing)
+
 * After **git clone** this repositry, do **npm install**. And then, if you do **npm start**, you can start this app
 
 
