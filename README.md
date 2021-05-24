@@ -13,7 +13,8 @@ We also show each theme hot topics, such as **science, technology, world, busine
 
 
 ## How to use
-You can see like this
+You can see like this.
+The name of this app is **Today-news**
 
 ![main screen](main_screen.png)
 
@@ -29,6 +30,7 @@ There are also the link for that article too.
 ## Demo Video Link
 [Group12 Demo Video](https://youtu.be/TZlyC6lbsX4)
 
+## Installation Instruction
 
 ## License
 
