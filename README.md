@@ -26,7 +26,8 @@ There are also the link for that article too.
 
 ![article screen](sub_screen.png)
 
-
+##Demo Video Link
+[Group12 Demo Video](https://youtu.be/TZlyC6lbsX4)
 
 
 ## License
