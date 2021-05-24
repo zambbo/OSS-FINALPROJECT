@@ -38,13 +38,17 @@ You have two ways for this!
 
 You can run this app by run the **oss_finalproject.exe**
 
-* After **git clone** this repositry, do ```npm install```. And then, if you do ```npm start```, you can start this app
+* After 
+
+```git clone [This repositry https...]```this repositry, do 
+```npm install``` And then, if you do 
+```npm start``` You can start this app
 
 ### Let me show in detail.
 
 ### step 1
 * Open the new folder where you want to download this application.
-Then, do ```git clone [This repositry https]```
+Then, do ```git clone [This repositry https...]```
 
 ![install_step1](images/install_step1.png)
 
@@ -55,15 +59,15 @@ After that, do ```npm install```.
 ![install_step2](images/install_step2.png)
 
 ### step 3
-* After you install successfully, Just enter **npm start**
-Then a new window will pop up.
+* After you install successfully, Just enter ```npm start```
+Then a new window will pop up. **Pleas wait a second after the window popped up!!**
 
 ![install_step3](images/install_step3.png)
 
-```vscode
-npm install
-```
-
+### step 4
+* Finally, you run this app succeffully! Enjoy this app!
+* 
+![install_step4](images/install_step4.png)
 
 
 ## Version
