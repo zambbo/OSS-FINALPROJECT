@@ -11,7 +11,7 @@ getNewsList_wt = async () => {
         let news_link = $(elem).children(".WSJTheme--headline--7VCzo7Ay").children().children("a").attr("href");
         if(!news_link)
             return;
-        newsList[idx] = news_link;
+            newsList.push(news_link);
     });
     
     let ret_news_lists = [];

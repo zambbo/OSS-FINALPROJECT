@@ -12,7 +12,7 @@ getNewsList_nb = async () => {
         let news_link = $(elem).children(".cluster_text").children("a").attr("href");
         if(!news_link)
             return;
-        newsList[idx] = news_link;
+        newsList.push(news_link);
     });
     
     // 10개까지만 짜르기.

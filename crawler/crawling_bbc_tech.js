@@ -17,7 +17,7 @@ async function getNewsList_bt(){
         const url_back = $(elem).find("div > a").attr("href");
         if(!url_back || url_back.slice(0,1) != '/')
             return;
-        newsList[idx] = "https://www.bbc.com"+ url_back;
+        newsList.push("https://www.bbc.com"+ url_back);
     })
 
     //각각의 news_list에 대해서 타이틀을 출력. (just exercise)
