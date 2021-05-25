@@ -67,7 +67,7 @@ Then a new window will pop up. **Pleas wait a second after the window popped up!
 
 ### step 4
 * Finally, you run this app succeffully! Enjoy this app!
-* 
+
 ![install_step4](images/install_step4.png)
 
 
